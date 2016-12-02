@@ -10,7 +10,7 @@
  * @property {string} description
  * @method   getDetails
  */
- function Spell(name, cost, description) {
+   function Spell(name, cost, description) {
       this.name = name;
       this.cost = cost;
       this.description = description;
@@ -86,23 +86,9 @@
       this.mana = mana;
       this.isAlive = true;
    } 
-   Spellcaster.prototype.inflictDamage = function(){
-      this.health -= damage;
-      if {this.health <= 0
-      }else{
-         this.isAlive = false;
-      }
-   };
-   
-   Spellcaster.prototype.spendMana = function(){
-   
-   };
 
-   Spellcaster.prototype.invoke = function(){
-   };
-
-  /**
-   * @method inflictDamage
+  
+/*   * @method inflictDamage
    *
    * The spellcaster loses health equal to `damage`.
    * Health should never be negative.
@@ -110,9 +96,18 @@
    * its `isAlive` property should be set to `false`.
    *
    * @param  {number} damage  Amount of damage to deal to the spellcaster
+*/
+      Spellcaster.prototype.inflictDamage = function(damage){
+      this.health -= damage;
+      if ( this.health <= 0 ) {
+         this.health = 0;
+         this.isAlive = false;
+      }
+   };
+   
+/*
 
-   }
-  /**
+  *
    * @method spendMana
    *
    * Reduces the spellcaster's mana by `cost`.
@@ -121,6 +116,13 @@
    * @param  {number} cost      The amount of mana to spend.
    * @return {boolean} success  Whether mana was successfully spent.
    */
+   Spellcaster.prototype.spendMana = function (cost) {
+      if (this.mana >= cost) {
+            this.mana -= cost;
+            return true;
+      } 
+            return false;
+   };
 
   /**
    * @method invoke
@@ -147,4 +149,5 @@
    * @param  {(Spell|DamageSpell)} spell  The spell to be cast.
    * @param  {Spellcaster} target         The spell target to be inflicted.
    * @return {boolean}                    Whether the spell was successfully cast.
-   */
+   
+*/
